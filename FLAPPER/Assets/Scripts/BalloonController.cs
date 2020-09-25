@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using ChrisTutorials.Persistent;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,8 @@ public class BalloonController : MonoBehaviour
     public float maxRange;
     private float randomSpeed;
     #endregion
+
+    
     private void Start()
     {
         balloonMovementSpeed = Random.Range(minSpeed, maxSpeed);
@@ -33,6 +36,7 @@ public class BalloonController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+       
         if(collision.gameObject.CompareTag("Player"))
         {
             Vector3 here = new Vector3(collision.transform.position.x, collision.transform.position.y, collision.transform.position.z + 1);

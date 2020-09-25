@@ -1,9 +1,15 @@
 fileFormatVersion: 2
-guid: 9964006045dfff94a92b566dee1f224e
+guid: 338ce098ffbb8554e83ef3fdb8959ff2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - masterGroup: {fileID: 24300002, guid: 5a72a0dc8de886743a93bff5c73b7d4a, type: 2}
+  - masterMixer: {fileID: 24100000, guid: 5a72a0dc8de886743a93bff5c73b7d4a, type: 2}
+  - musicGroup: {fileID: 9213363628409121108, guid: 5a72a0dc8de886743a93bff5c73b7d4a,
+      type: 2}
+  - soundGroup: {fileID: 526543684134856470, guid: 5a72a0dc8de886743a93bff5c73b7d4a,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

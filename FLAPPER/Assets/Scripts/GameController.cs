@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using ChrisTutorials.Persistent;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class GameController : MonoBehaviour
     [Header("Player Components")]
     public GameObject player;
     public Rigidbody rb;
+
     [Header("Player On Fire")]
     public GameObject lvl1;
     public GameObject lvl2;
@@ -32,11 +34,17 @@ public class GameController : MonoBehaviour
     #endregion
 
     public bool Playing;
-
+    public AudioClip backgroundMusic;
+    
     private void Start()
     {
+        image.gameObject.SetActive(true);
+        #region Background Music
+        AudioManager.Instance.PlayLoop(backgroundMusic, player.transform);
+        #endregion
+
         #region Fade Script 1/3
-        
+
         targetAlpha = image.color.a;
 
         #endregion
@@ -70,26 +78,31 @@ public class GameController : MonoBehaviour
 
     public void FixedUpdate()
     {
+        
         if(currentMultiplier < 2)
         {
             lvl1.SetActive(false);
             lvl2.SetActive(false);
             lvl3.SetActive(false);
             lvl4.SetActive(false);
+            
         }
         if(currentMultiplier > 1)
         {
             lvl1.SetActive(true);
+            
         }
         if(currentMultiplier > 2)
         {
             lvl2.SetActive(true);
             lvl1.SetActive(false);
+           
         }
         if(currentMultiplier > 3)
         {
             lvl3.SetActive(true);
             lvl2.SetActive(false);
+            
         }
         if(currentMultiplier > 4)
         {
