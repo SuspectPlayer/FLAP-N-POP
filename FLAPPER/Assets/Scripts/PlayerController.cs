@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
     public GameObject manager;
     public GameObject balloonSpawner;
+    
    
     public AudioClip flapClip;
     public AudioClip spinClip;
@@ -38,11 +39,18 @@ public class PlayerController : MonoBehaviour
     [Header("Switches")]
     public bool spinning;
     public bool isAlive;
+
+    public GameController gameController;
+    public GameObject mesh1;
+    public GameObject mesh2;
+    public GameObject mesh3;
+    public GameObject mesh4;
+
     #endregion
     private void Start()
     {
-               
-
+        mesh1.SetActive(true);
+        gameController = FindObjectOfType<GameController>();
         isAlive = false;
         rb = player.GetComponent<Rigidbody>();
         StartCoroutine(StartDelay());
@@ -96,9 +104,35 @@ public class PlayerController : MonoBehaviour
             //        Vector3 origVector = new Vector3(zeroDegrees, 180, 0);
 
             //        armature.transform.eulerAngles = Vector3.Lerp(armature.transform.rotation.eulerAngles, origVector, 10 * Time.deltaTime);
-            
-        
-           
+            if(gameController.currentMultiplier == 1)
+            {
+                mesh1.SetActive(true);
+                mesh2.SetActive(false);
+                mesh3.SetActive(false);
+                mesh4.SetActive(false);
+            }
+            if (gameController.currentMultiplier == 2)
+            {
+                mesh1.SetActive(false);
+                mesh2.SetActive(true);
+                mesh3.SetActive(false);
+                mesh4.SetActive(false);
+            }
+            if (gameController.currentMultiplier == 3)
+            {
+                mesh1.SetActive(false);
+                mesh2.SetActive(false);
+                mesh3.SetActive(true);
+                mesh4.SetActive(false);
+            }
+            if (gameController.currentMultiplier > 3)
+            {
+                mesh1.SetActive(false);
+                mesh2.SetActive(false);
+                mesh3.SetActive(false);
+                mesh4.SetActive(true);
+            }
+
         }
     }
     #endregion

@@ -10,6 +10,12 @@ TagManager:
   - UI
   - Manager
   - Ring
+  - Armature
+  - FxTemporaire
+  - Mesh1
+  - Mesh2
+  - Mesh3
+  - Mesh4
   layers:
   - Default
   - TransparentFX

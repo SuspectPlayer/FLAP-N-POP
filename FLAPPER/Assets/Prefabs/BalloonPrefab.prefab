@@ -76,12 +76,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  popEffect: {fileID: 100018, guid: a40b64bf23366dc42a892af2c6ff6140, type: 3}
+  popEffect: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
+  spinPopEffect: {fileID: 100018, guid: a40b64bf23366dc42a892af2c6ff6140, type: 3}
   minSpeed: 5
   maxSpeed: 15
   minRange: 0.5
   maxRange: 4
-  popSound: {fileID: 8300000, guid: 6e2361ca770c1e8468e56cd4db447e1d, type: 3}
 --- !u!1001 &6768104758708241273
 PrefabInstance:
   m_ObjectHideFlags: 0

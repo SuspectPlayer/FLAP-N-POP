@@ -9,6 +9,7 @@ public class BalloonController : MonoBehaviour
     [Header("Balloon Components")]
     public GameObject gameManager;
     public GameObject popEffect;
+    public GameObject spinPopEffect;
     [Header("Balloon Move Speed")]
     private float balloonMovementSpeed;
     public float minSpeed;
@@ -18,9 +19,14 @@ public class BalloonController : MonoBehaviour
     public float minRange;
     public float maxRange;
     private float randomSpeed;
+
+    private PlayerController playerController;
     #endregion
 
-    
+    private void Awake()
+    {
+        playerController = FindObjectOfType<PlayerController>();
+    }
     private void Start()
     {
         balloonMovementSpeed = Random.Range(minSpeed, maxSpeed);
@@ -36,13 +42,24 @@ public class BalloonController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-       
-        if(collision.gameObject.CompareTag("Player"))
+        
+        
+        Vector3 here = new Vector3(collision.transform.position.x, collision.transform.position.y, collision.transform.position.z + 1);
+
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Vector3 here = new Vector3(collision.transform.position.x, collision.transform.position.y, collision.transform.position.z + 1);
-            Instantiate(popEffect, here, Quaternion.Euler(0, 0, 0));
-            Destroy(gameObject);
+            if(playerController.spinning)
+            {
+                Instantiate(spinPopEffect, here, Quaternion.Euler(0, 0, 0));
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instantiate(popEffect, here, Quaternion.Euler(0, 0, 0));
+                Destroy(gameObject);
+            }
         }
+
         else
         {
             gameManager.GetComponent<GameController>().GameOver();

@@ -14,7 +14,10 @@ public class FollowBalloon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject balloon = GameObject.FindGameObjectWithTag("Balloon");
-        transform.position = balloon.transform.position;
+        if (gameObject != null)
+        {
+            GameObject balloon = GameObject.FindGameObjectWithTag("Balloon");
+            transform.position = balloon.transform.position;
+        }
     }
 }
