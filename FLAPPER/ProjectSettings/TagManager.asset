@@ -16,6 +16,9 @@ TagManager:
   - Mesh2
   - Mesh3
   - Mesh4
+  - Entry1
+  - Entry2
+  - Canvas
   layers:
   - Default
   - TransparentFX

@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     public SFX sfx;
 
     #endregion
-    private void Start()
+    private void Awake()
     {
         mesh1.SetActive(true);
         gameController = FindObjectOfType<GameController>();

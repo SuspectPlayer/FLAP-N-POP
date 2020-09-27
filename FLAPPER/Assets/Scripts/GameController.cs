@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour
     public float multiplier;
     [Header("UI Text Components")]
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI highscoreText;
     public TextMeshProUGUI multiplierText;
     public TextMeshProUGUI styleText;
     public TextMeshProUGUI mainText;
@@ -34,20 +35,17 @@ public class GameController : MonoBehaviour
     public AudioSource audioSource;
     public VO vo;
 
-    
-
-
     private float targetAlpha;
     #endregion
 
     public bool Playing;
-    
-
+    public Pause pause;
     private void Start()
     {
         vo = FindObjectOfType<VO>();
-       
+        pause = FindObjectOfType<Pause>();
         image.gameObject.SetActive(true);
+        highscoreText.SetText("" + PlayerPrefs.GetFloat("HighScore", 0));
         #region Background Music
        
         #endregion
@@ -82,6 +80,11 @@ public class GameController : MonoBehaviour
 
         scoreText.SetText("" + currentScore);
         currentMultiplier = multiplier;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseMenu();
+        }
     }
     #endregion
 
@@ -147,7 +150,7 @@ public class GameController : MonoBehaviour
     {
         //increase score by regular points
         currentScore += points;
-
+        Debug.Log("Points" + currentScore);
         //reset multiplier
         multiplier = 1;
     }
@@ -205,11 +208,17 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(1);
         mainText.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(true);
+        highscoreText.gameObject.SetActive(true);
         Playing = true;
         rb.useGravity = true;
     }
     #endregion
-
+    #region Pause Menu
+    public void PauseMenu()
+    {
+        
+    }
+    #endregion
     #region Game Over
     public void GameOver()
     {
@@ -218,6 +227,22 @@ public class GameController : MonoBehaviour
         mainText.SetText("GAME OVER!");
         Playing = false;
         rb.useGravity = false;
+        if(currentScore > PlayerPrefs.GetInt("HighScore", 0))
+        {
+            PlayerPrefs.SetFloat("HighScore", currentScore);
+            highscoreText.SetText(""+ currentScore);
+            StartCoroutine(GameOverMenu());
+        }
+        else
+        {
+            StartCoroutine(GameOverMenu());
+        }
     }
     #endregion
+    IEnumerator GameOverMenu()
+    {
+        yield return new WaitForSeconds(2);
+        pause.GameOverUI();
+    }
 }
+

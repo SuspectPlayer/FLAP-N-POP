@@ -26,14 +26,11 @@ public class BalloonController : MonoBehaviour
     private void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
-    }
-    private void Start()
-    {
         balloonMovementSpeed = Random.Range(minSpeed, maxSpeed);
         randomSpeed = Random.Range(minRange, maxRange);
         gameManager = GameObject.FindGameObjectWithTag("Manager");
-        
     }
+    
     private void Update()
     {
         transform.Translate(-Vector3.forward * balloonMovementSpeed * Time.deltaTime);
