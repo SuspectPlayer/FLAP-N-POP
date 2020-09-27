@@ -1,4 +1,4 @@
-﻿using ChrisTutorials.Persistent;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -15,16 +15,7 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
     public GameObject manager;
     public GameObject balloonSpawner;
-    
-   
-    public AudioClip flapClip;
-    public AudioClip spinClip;
 
-    public AudioClip popClip;
-    public AudioClip spinClip1;
-    public AudioClip spinClip2;
-    public AudioClip spinClip3;
-    public AudioClip spinFailClip;
 
     [Header("Player Input Controls")]
     public KeyCode flap;
@@ -46,6 +37,9 @@ public class PlayerController : MonoBehaviour
     public GameObject mesh3;
     public GameObject mesh4;
 
+    [Header("Audio Source")]
+    public SFX sfx;
+
     #endregion
     private void Start()
     {
@@ -54,6 +48,7 @@ public class PlayerController : MonoBehaviour
         isAlive = false;
         rb = player.GetComponent<Rigidbody>();
         StartCoroutine(StartDelay());
+        sfx = FindObjectOfType<SFX>();
         
     }
 
@@ -68,6 +63,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(flap))
             {
                 Flap();
+                sfx.audioSource.PlayOneShot(sfx.sfx_flap,1f);
                 //reset fall velocity
                 fallVelocity = 0;
             }
@@ -75,6 +71,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(spin))
             {
                 Spin();
+                sfx.audioSource.PlayOneShot(sfx.sfx_spin, 1f);
                 //reset fall velocity for comfort
                 fallVelocity = 0;
             }
@@ -111,21 +108,21 @@ public class PlayerController : MonoBehaviour
                 mesh3.SetActive(false);
                 mesh4.SetActive(false);
             }
-            if (gameController.currentMultiplier == 2)
+            if (gameController.currentMultiplier == 10)
             {
                 mesh1.SetActive(false);
                 mesh2.SetActive(true);
                 mesh3.SetActive(false);
                 mesh4.SetActive(false);
             }
-            if (gameController.currentMultiplier == 3)
+            if (gameController.currentMultiplier == 20)
             {
                 mesh1.SetActive(false);
                 mesh2.SetActive(false);
                 mesh3.SetActive(true);
                 mesh4.SetActive(false);
             }
-            if (gameController.currentMultiplier > 3)
+            if (gameController.currentMultiplier > 30)
             {
                 mesh1.SetActive(false);
                 mesh2.SetActive(false);
@@ -144,7 +141,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector3.up * flapStrength);
 
-            AudioManager.Instance.Play(flapClip, this.transform);
+           
         }        
     }
     public void Spin()
@@ -154,7 +151,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("Fly", false);
         anim.SetBool("Spin", true);
         rb.AddForce(Vector3.up * flapStrength);
-        AudioManager.Instance.Play(spinClip, this.transform);
+        
         StartCoroutine(SpinDelay());
     }
     #endregion
@@ -185,22 +182,19 @@ public class PlayerController : MonoBehaviour
                 {
                     manager.GetComponent<GameController>().AddMultiplier();
                     balloonSpawner.GetComponent<BalloonSpawnController>().SpawnBalloon();
-                    if (manager.GetComponent<GameController>().currentMultiplier < 1)
+                    if (manager.GetComponent<GameController>().currentMultiplier < 2)
                     {
-                        AudioManager.Instance.Play(popClip, this.transform);
-                    }
-                    if (manager.GetComponent<GameController>().currentMultiplier > 0)
-                    {
-                        AudioManager.Instance.Play(spinClip1, this.transform);
+                        sfx.audioSource.PlayOneShot(sfx.sfx_popspin1, 1f);
                     }
                     if (manager.GetComponent<GameController>().currentMultiplier > 1)
                     {
-                        AudioManager.Instance.Play(spinClip2, this.transform);
+                        sfx.audioSource.PlayOneShot(sfx.sfx_popspin2, 1f);
                     }
                     if (manager.GetComponent<GameController>().currentMultiplier > 2)
                     {
-                        AudioManager.Instance.Play(spinClip3, this.transform);
+                        sfx.audioSource.PlayOneShot(sfx.sfx_popspin3, 1f);
                     }
+                    
                 }
                 else
                 {
@@ -208,13 +202,13 @@ public class PlayerController : MonoBehaviour
                     balloonSpawner.GetComponent<BalloonSpawnController>().SpawnBalloon();
                     if (manager.GetComponent<GameController>().currentMultiplier > 1)
                     {
-                        AudioManager.Instance.Play(spinFailClip, this.transform);
+                        sfx.audioSource.PlayOneShot(sfx.sfx_pop, 1f);
 
                     }
                     if (manager.GetComponent<GameController>().currentMultiplier < 2)
                     {
-                        AudioManager.Instance.Play(popClip, this.transform);
 
+                        sfx.audioSource.PlayOneShot(sfx.sfx_pop, 1f);
                     }
 
                 }

@@ -76,8 +76,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  popEffect: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
-  spinPopEffect: {fileID: 100018, guid: a40b64bf23366dc42a892af2c6ff6140, type: 3}
+  popEffect: {fileID: 127075866824991259, guid: 9ec970110dcde5b469068f73643a2a3c,
+    type: 3}
+  spinPopEffect: {fileID: 2176235620962864259, guid: 385dc5589b5fb824fabbf7e3ce992e82,
+    type: 3}
   minSpeed: 5
   maxSpeed: 15
   minRange: 0.5
