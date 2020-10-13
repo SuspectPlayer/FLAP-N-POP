@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AdManager
     - BalloonController
     - BalloonSpawnController
     - CFX_AutoDestructShuriken
@@ -17,9 +18,8 @@ ScriptsOnlyBuild:
     - Cinemachine.CinemachinePipeline
     - Cinemachine.CinemachineTransposer
     - Cinemachine.CinemachineVirtualCamera
-    Unity.ProBuilder.Editor.dll:
-    - UnityEditor.ProBuilder.EditorToolbar
-    - UnityEditor.ProBuilder.ProBuilderEditor
+    GoogleMobileAds.Editor.dll:
+    - GoogleMobileAds.Editor.GoogleMobileAdsSettings
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
@@ -36,8 +36,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -96,57 +98,59 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11260}
+      Script: {instanceID: 11316}
     - Class: 114
-      Script: {instanceID: 11666}
+      Script: {instanceID: 11576}
     - Class: 114
-      Script: {instanceID: 11752}
+      Script: {instanceID: 11654}
     - Class: 114
-      Script: {instanceID: 11968}
+      Script: {instanceID: 11796}
     - Class: 114
-      Script: {instanceID: 12262}
+      Script: {instanceID: 12002}
     - Class: 114
-      Script: {instanceID: 12358}
+      Script: {instanceID: 12074}
     - Class: 114
-      Script: {instanceID: 12364}
+      Script: {instanceID: 12080}
     - Class: 114
-      Script: {instanceID: 12806}
+      Script: {instanceID: 12398}
     - Class: 114
-      Script: {instanceID: 12890}
+      Script: {instanceID: 12460}
     - Class: 114
-      Script: {instanceID: 12952}
+      Script: {instanceID: 12512}
     - Class: 114
-      Script: {instanceID: 13118}
+      Script: {instanceID: 12646}
     - Class: 114
-      Script: {instanceID: 13308}
+      Script: {instanceID: 12784}
     - Class: 114
-      Script: {instanceID: 13534}
+      Script: {instanceID: 12954}
     - Class: 114
-      Script: {instanceID: 13648}
+      Script: {instanceID: 13050}
     - Class: 114
-      Script: {instanceID: 13674}
+      Script: {instanceID: 13070}
     - Class: 114
-      Script: {instanceID: 13860}
+      Script: {instanceID: 13202}
     - Class: 114
-      Script: {instanceID: 13920}
+      Script: {instanceID: 13248}
     - Class: 114
-      Script: {instanceID: 14026}
+      Script: {instanceID: 13312}
     - Class: 114
-      Script: {instanceID: 14094}
+      Script: {instanceID: 13334}
     - Class: 114
-      Script: {instanceID: 14288}
+      Script: {instanceID: 13370}
     - Class: 114
-      Script: {instanceID: 14466}
+      Script: {instanceID: 13510}
     - Class: 114
-      Script: {instanceID: 14506}
+      Script: {instanceID: 13572}
     - Class: 114
-      Script: {instanceID: 14636}
+      Script: {instanceID: 13636}
     - Class: 114
-      Script: {instanceID: 14654}
+      Script: {instanceID: 13666}
     - Class: 114
-      Script: {instanceID: 14686}
+      Script: {instanceID: 13764}
     - Class: 114
-      Script: {instanceID: 25912}
+      Script: {instanceID: 13780}
+    - Class: 114
+      Script: {instanceID: 13798}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -227,35 +231,39 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11260}
+      Script: {instanceID: 11316}
     - Class: 114
-      Script: {instanceID: 11666}
+      Script: {instanceID: 11576}
     - Class: 114
-      Script: {instanceID: 11708}
+      Script: {instanceID: 11610}
     - Class: 114
-      Script: {instanceID: 12358}
+      Script: {instanceID: 12074}
     - Class: 114
-      Script: {instanceID: 12432}
+      Script: {instanceID: 12116}
     - Class: 114
-      Script: {instanceID: 13118}
+      Script: {instanceID: 12586}
     - Class: 114
-      Script: {instanceID: 13154}
+      Script: {instanceID: 12646}
+    - Class: 114
+      Script: {instanceID: 12668}
+    - Class: 114
+      Script: {instanceID: 12954}
+    - Class: 114
+      Script: {instanceID: 12970}
+    - Class: 114
+      Script: {instanceID: 13248}
+    - Class: 114
+      Script: {instanceID: 13312}
+    - Class: 114
+      Script: {instanceID: 13334}
     - Class: 114
       Script: {instanceID: 13534}
     - Class: 114
-      Script: {instanceID: 13554}
+      Script: {instanceID: 13666}
     - Class: 114
-      Script: {instanceID: 13920}
+      Script: {instanceID: 13764}
     - Class: 114
-      Script: {instanceID: 14026}
-    - Class: 114
-      Script: {instanceID: 14326}
-    - Class: 114
-      Script: {instanceID: 14506}
-    - Class: 114
-      Script: {instanceID: 14636}
-    - Class: 114
-      Script: {instanceID: 14686}
+      Script: {instanceID: 13798}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -333,12 +341,6 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
-      Hash: 9c7c87712e298256d276eb96e02a57b1
-    assemblyName: Unity.ProBuilder.dll
-    namespaceName: UnityEngine.ProBuilder
-    className: PreferenceDictionary
-  - hash:
-      serializedVersion: 2
       Hash: a2113831d3323f931007e1b3812dc814
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
@@ -379,12 +381,6 @@ ScriptsOnlyBuild:
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
     className: GroupWeightManipulator
-  - hash:
-      serializedVersion: 2
-      Hash: d2eba8f2fd97b33476dea24e1b2164d9
-    assemblyName: Unity.Animation.Rigging.dll
-    namespaceName: UnityEngine.Animations.Rigging
-    className: MultiRotationConstraint
   - hash:
       serializedVersion: 2
       Hash: aeb62f729c52c814dec86c47dcac1471
@@ -453,13 +449,7 @@ ScriptsOnlyBuild:
     className: MenuSceneManager
   - hash:
       serializedVersion: 2
-      Hash: f6633ace6e530c0000f2ac6da4269c52
-    assemblyName: Unity.ProBuilder.dll
-    namespaceName: UnityEngine.ProBuilder
-    className: PolyShape
-  - hash:
-      serializedVersion: 2
-      Hash: 5d8e2c77a52d241ca85bdc990100c8fd
+      Hash: 6cf9a36559693294a029f76a7fc9b109
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BalloonSpawnController
@@ -513,28 +503,10 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 36f96c190e244321e128769d9c5120ac
-    assemblyName: Unity.ProBuilder.dll
-    namespaceName: UnityEngine.ProBuilder
-    className: ProBuilderMesh
-  - hash:
-      serializedVersion: 2
-      Hash: 663ee71987357c2869b08012cec786c2
-    assemblyName: Unity.Animation.Rigging.dll
-    namespaceName: UnityEngine.Animations.Rigging
-    className: MultiPositionConstraint
-  - hash:
-      serializedVersion: 2
       Hash: bd3cf68c8964d3c66d1c43f4f98508c9
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationTrack
-  - hash:
-      serializedVersion: 2
-      Hash: fa409a8e8ee17fdc60daea003fb17f92
-    assemblyName: Unity.Animation.Rigging.dll
-    namespaceName: UnityEngine.Animations.Rigging
-    className: MultiParentConstraint
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -567,28 +539,10 @@ ScriptsOnlyBuild:
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 7b6c282eaa68dd7067d5ebe46a7a587b
-    assemblyName: Unity.Animation.Rigging.dll
-    namespaceName: UnityEngine.Animations.Rigging
-    className: ChainIKConstraint
-  - hash:
-      serializedVersion: 2
       Hash: 666a1bc8d46f314c018ffaaa3f6628d1
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
     className: CinemachineFreeLook
-  - hash:
-      serializedVersion: 2
-      Hash: a7022b0922134279f30b1d2924033a3c
-    assemblyName: Unity.Animation.Rigging.dll
-    namespaceName: UnityEngine.Animations.Rigging
-    className: MultiAimConstraint
-  - hash:
-      serializedVersion: 2
-      Hash: 32f6d1d5a09e5c94c633a32edd3e6836
-    assemblyName: Unity.ProBuilder.dll
-    namespaceName: UnityEngine.ProBuilder
-    className: BezierShape
   - hash:
       serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
@@ -615,7 +569,7 @@ ScriptsOnlyBuild:
     className: NoiseSettings
   - hash:
       serializedVersion: 2
-      Hash: 48d19ad19c1818bf8a20fc74de05a92b
+      Hash: 6cb30438f1b0f7a33cb96b17fc5f3476
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BalloonController
@@ -645,7 +599,7 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: edf3cabea29b6705239a37ab8476b889
+      Hash: 6e145c88c807012b2989cee0d63947b7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SwipeManager
@@ -705,12 +659,6 @@ ScriptsOnlyBuild:
     className: CinemachinePOV
   - hash:
       serializedVersion: 2
-      Hash: 4d0bec33788c91c1e3d3c90c8f49d5db
-    assemblyName: Unity.Animation.Rigging.dll
-    namespaceName: UnityEngine.Animations.Rigging
-    className: OverrideTransform
-  - hash:
-      serializedVersion: 2
       Hash: 4aac268d7e435f7a65add91aaba819a4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -747,22 +695,10 @@ ScriptsOnlyBuild:
     className: CFX_Demo_RotateCamera
   - hash:
       serializedVersion: 2
-      Hash: e9389e944eb81a3a9df56fcdb09ce6a9
-    assemblyName: Unity.ProBuilder.dll
-    namespaceName: UnityEngine.ProBuilder
-    className: TriggerBehaviour
-  - hash:
-      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalTrack
-  - hash:
-      serializedVersion: 2
-      Hash: e9389e944eb81a3a9df56fcdb09ce6a9
-    assemblyName: Unity.ProBuilder.dll
-    namespaceName: UnityEngine.ProBuilder
-    className: ColliderBehaviour
   - hash:
       serializedVersion: 2
       Hash: bd543bad7f9f6262f10595aadb130d22
@@ -819,16 +755,16 @@ ScriptsOnlyBuild:
     className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Unity.ProGrids.dll
-    namespaceName: UnityEngine.ProGrids
-    className: IgnoreSnap
-  - hash:
-      serializedVersion: 2
       Hash: 694d20920c0e41f567e119f7159a3644
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
     className: CinemachinePath
+  - hash:
+      serializedVersion: 2
+      Hash: 6fb512c6733e02f441372611e6f94f11
+    assemblyName: GoogleMobileAds.Editor.dll
+    namespaceName: GoogleMobileAds.Editor
+    className: GoogleMobileAdsSettings
   - hash:
       serializedVersion: 2
       Hash: 660deb0ce569359218f0ba85b7ce0e3a
@@ -867,12 +803,6 @@ ScriptsOnlyBuild:
     className: CinemachineTargetGroup
   - hash:
       serializedVersion: 2
-      Hash: d949440bce8ebd23a50ba0ed68445164
-    assemblyName: Unity.Animation.Rigging.dll
-    namespaceName: UnityEngine.Animations.Rigging
-    className: Rig
-  - hash:
-      serializedVersion: 2
       Hash: e244702e0dc05782229aa524e4d757f5
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
@@ -891,22 +821,10 @@ ScriptsOnlyBuild:
     className: CinemachineTransposer
   - hash:
       serializedVersion: 2
-      Hash: 177378ccefd514b3e290ba515d7e121b
-    assemblyName: Unity.Animation.Rigging.dll
-    namespaceName: UnityEngine.Animations.Rigging
-    className: TwistCorrection
-  - hash:
-      serializedVersion: 2
       Hash: a66794b62dbf044668a5f102bb7908c2
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
     className: CinemachineImpulseListener
-  - hash:
-      serializedVersion: 2
-      Hash: d6a8e9bec3160a152b9b2710593d3caa
-    assemblyName: Unity.ProBuilder.dll
-    namespaceName: UnityEngine.ProBuilder
-    className: ColorPalette
   - hash:
       serializedVersion: 2
       Hash: dad3a1f1e1ecb4691721bab721edd60a
@@ -1047,28 +965,10 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 11e377490d98b68984e2f2febb71d230
-    assemblyName: Unity.Animation.Rigging.dll
-    namespaceName: UnityEngine.Animations.Rigging
-    className: DampedTransform
-  - hash:
-      serializedVersion: 2
-      Hash: 301f4da7cc3b301c161d089f9d22efed
-    assemblyName: Unity.ProBuilder.dll
-    namespaceName: UnityEngine.ProBuilder
-    className: Entity
-  - hash:
-      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: SimpleScript
-  - hash:
-      serializedVersion: 2
-      Hash: 1aa3c1056d70edf15fdd22dc9270d47e
-    assemblyName: Unity.Animation.Rigging.dll
-    namespaceName: UnityEngine.Animations.Rigging
-    className: MultiReferentialConstraint
   - hash:
       serializedVersion: 2
       Hash: a66794b62dbf044668a5f102bb7908c2
@@ -1081,12 +981,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: TMP_TextInfoDebugTool
-  - hash:
-      serializedVersion: 2
-      Hash: 87f8fc32f781d33a6b6782342a4b1b9a
-    assemblyName: Unity.Animation.Rigging.dll
-    namespaceName: UnityEngine.Animations.Rigging
-    className: BoneRenderer
   - hash:
       serializedVersion: 2
       Hash: 6225eb0973ab0af667bc5f9d1b1b18de
@@ -1105,6 +999,12 @@ ScriptsOnlyBuild:
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
     className: CinemachineBlenderSettings
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: GoogleMobileAds.dll
+    namespaceName: GoogleMobileAds.Common
+    className: MobileAdsEventExecutor
   - hash:
       serializedVersion: 2
       Hash: a1ca1237bad0f30ea5ba8f4060929114
@@ -1137,12 +1037,6 @@ ScriptsOnlyBuild:
     className: CinemachineVolumeSettings
   - hash:
       serializedVersion: 2
-      Hash: f67be20036b6ca50ced0b0e3383b6416
-    assemblyName: Unity.Animation.Rigging.dll
-    namespaceName: UnityEngine.Animations.Rigging
-    className: TwoBoneIKConstraint
-  - hash:
-      serializedVersion: 2
       Hash: 27e5341178f188b89bdc6495710b590c
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
@@ -1153,6 +1047,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AudioTrack
+  - hash:
+      serializedVersion: 2
+      Hash: b39ad02b8825e32ed1e0f0fce25bb8fe
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AdManager
   - hash:
       serializedVersion: 2
       Hash: ae83e830e7a90c0aff918c4c2e520825
@@ -1179,7 +1079,7 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 419654d545f6d1ccb902828a1b37dd83
+      Hash: 6bd67ecbad6d0680de3b6722b3a25eee
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameController
@@ -1263,6 +1163,12 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
+      Hash: 3f6614f47ff8a1f9c852df69603ea12c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UIComponentManager
+  - hash:
+      serializedVersion: 2
       Hash: e70e7b311a1620c2e899545b2e1fdfae
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1275,13 +1181,7 @@ ScriptsOnlyBuild:
     className: TMPro_InstructionOverlay
   - hash:
       serializedVersion: 2
-      Hash: 9b066ac9cf8eb18778356e56ad3ed781
-    assemblyName: Unity.Animation.Rigging.dll
-    namespaceName: UnityEngine.Animations.Rigging
-    className: RigBuilder
-  - hash:
-      serializedVersion: 2
-      Hash: 92512908c242587f4e1eb219afc1f97a
+      Hash: d61ae18bcb66d3b24b341c44328d5d51
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: VO
@@ -1360,12 +1260,6 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Unity.Animation.Rigging.dll
-    namespaceName: UnityEngine.Animations.Rigging
-    className: RigTransform
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestRunner.Utils
     className: TestRunCallbackListener
@@ -1389,16 +1283,10 @@ ScriptsOnlyBuild:
     className: Dropdown
   - hash:
       serializedVersion: 2
-      Hash: 81519ada8d9d97a3cbd73411b4157dc8
+      Hash: a32c982c871ecd1574f2c480cf32b6be
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
-  - hash:
-      serializedVersion: 2
-      Hash: fbc140e5a534e36e4162c4625fa69815
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: GuideController
   - hash:
       serializedVersion: 2
       Hash: dbfb4270852b0008a423a7418d9de4cf
@@ -1437,12 +1325,6 @@ ScriptsOnlyBuild:
     className: CinemachineClearShot
   - hash:
       serializedVersion: 2
-      Hash: f812bcb63c156a183728fe778d092bac
-    assemblyName: Unity.Animation.Rigging.dll
-    namespaceName: UnityEngine.Animations.Rigging
-    className: BlendConstraint
-  - hash:
-      serializedVersion: 2
       Hash: 7072231382eb3c4871b3dd75ad0227e1
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -1459,12 +1341,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 9286e8843ef8af7825c5bc4677b7e9c0
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: UIComponentManager
   platform: 13
   scenePathNames:
   - Assets/Scenes/Menu.unity

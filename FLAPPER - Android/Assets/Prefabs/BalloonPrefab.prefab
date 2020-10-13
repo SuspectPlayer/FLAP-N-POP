@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2564802247831375583}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.47, y: 0.90000004, z: 2.14}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
+  m_LocalScale: {x: 3.9984, y: 4.7000003, z: 3.9984}
   m_Children:
   - {fileID: 6514344806231237778}
   m_Father: {fileID: 0}
@@ -75,12 +75,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3ece5433eba9d4698362e2bcf880de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   popEffect: {fileID: 127075866824991259, guid: 9ec970110dcde5b469068f73643a2a3c,
     type: 3}
   spinPopEffect: {fileID: 2176235620962864259, guid: 385dc5589b5fb824fabbf7e3ce992e82,
     type: 3}
-  minSpeed: 3
-  maxSpeed: 4
+  minSpeed: 5
+  maxSpeed: 15
+  minRange: 0.5
+  maxRange: 4
 --- !u!1001 &6768104758708241273
 PrefabInstance:
   m_ObjectHideFlags: 0

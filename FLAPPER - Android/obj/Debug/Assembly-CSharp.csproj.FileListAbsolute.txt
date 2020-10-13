@@ -1,2 +1,0 @@
-E:\Unity Games\FLAP-N-POP\FLAPPER - Android\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
-E:\Unity Games\FLAP-N-POP\FLAPPER - Android\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache

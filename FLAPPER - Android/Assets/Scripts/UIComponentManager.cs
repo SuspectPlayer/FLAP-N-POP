@@ -7,13 +7,13 @@ using UnityEngine.UI;
 
 public class UIComponentManager : MonoBehaviour
 {
-    public bool gameIsPaused;
+    private bool gameIsPaused;
 
-    public GameObject pauseMenuUI;
-    public GameObject gameOverMenuUI;
-    public GameObject stylishText;
-    public GameObject multiplierText;
-    public GameObject textBox;
+    [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private GameObject gameOverMenuUI;
+    [SerializeField] private GameObject stylishText;
+    [SerializeField] private GameObject multiplierText;
+    [SerializeField] private GameObject textBox;
 
     private void Start()
     {

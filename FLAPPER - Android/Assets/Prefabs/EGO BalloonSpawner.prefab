@@ -43,5 +43,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0cfb428615f0f4486130b4a0b8fccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balloon: {fileID: 2564802247831375583, guid: 0e343322661c6724ea158b835fbd34e3, type: 3}
-  randomHeight: 0
+  gameController: {fileID: 0}
+  laneOneX: -3.5
+  laneTwoX: 0
+  laneThreeX: 3.5
+  _lvl1balloon: {fileID: 1859198026031278364, guid: 9fd77e461ad3cb5458bf1a438e47f17b,
+    type: 3}
+  _lvl2balloon: {fileID: 8340512419218779134, guid: ce13662e70182a147b482b8afb75ac74,
+    type: 3}
+  _lvl3balloon: {fileID: 889494068562953407, guid: f179ee6bd14390b4daafa79f0ab17cc2,
+    type: 3}
+  _lvl4balloon: {fileID: 1893221511520145351, guid: e07500742ff5263488217050017b02e2,
+    type: 3}
+  _lvl5balloon: {fileID: 5513363569931207921, guid: bb2de471964d2e24e960b9f7633436ed,
+    type: 3}
+  minHeight: 55
+  maxHeight: 65

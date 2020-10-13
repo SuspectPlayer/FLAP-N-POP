@@ -5,28 +5,46 @@ using UnityEngine;
 public class BalloonController : MonoBehaviour
 {
     [Header("Balloon Components")]  
-    public GameObject popEffect;
-    public GameObject spinPopEffect;
+    [SerializeField] private GameObject popEffect;
+    [SerializeField] private GameObject spinPopEffect;
+    public bool isImpulsing;
 
     [Header("Balloon Move Speed")]
     private float balloonMovementSpeed;
-    public float minSpeed;
-    public float maxSpeed;
+    [SerializeField] private float minSpeed;
+    [SerializeField] private float maxSpeed;
 
+    private Rigidbody rb;
     private PlayerController playerController;
     private GameController gameController;
+    private BalloonSpawnController ballonSpawner;
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
         playerController = FindObjectOfType<PlayerController>();
         gameController = FindObjectOfType<GameController>();
+        ballonSpawner = FindObjectOfType<BalloonSpawnController>();
 
         balloonMovementSpeed = Random.Range(minSpeed, maxSpeed);
     }
     
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.Translate(-Vector3.forward * balloonMovementSpeed * Time.deltaTime);
+          transform.Translate(-Vector3.forward * balloonMovementSpeed * Time.deltaTime);
+    }
+
+    public void ImpulseForward(float _f)
+    {
+        StartCoroutine(ImpulseForwardRoutine(_f));
+    }
+
+    IEnumerator ImpulseForwardRoutine(float ballonIF)
+    {
+        isImpulsing = true;
+        rb.AddForce(-Vector3.forward * ballonIF, ForceMode.Impulse);
+        yield return new WaitForSeconds(1f);
+        isImpulsing = false;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -35,7 +53,7 @@ public class BalloonController : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
-            if(playerController.spinning)
+            if(playerController.isDashing)
             {
                 Instantiate(spinPopEffect, here, Quaternion.Euler(0, 0, 0));
                 Destroy(gameObject);
@@ -49,7 +67,15 @@ public class BalloonController : MonoBehaviour
 
         if(collision.gameObject.tag == "DeadZone")
         {
-            gameController.GameOver();
+            if (!playerController.isSuperSiyan)
+            {
+                gameController.GameOver();
+            }
+            else
+            {
+                ballonSpawner.SpawnBalloon();
+                gameController.ResetBirdToDefault();
+            }
             Destroy(gameObject);
         }
     }

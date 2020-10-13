@@ -7,15 +7,27 @@ using UnityEngine.UI;
 
 public class MenuSceneManager : MonoBehaviour
 {
-    private bool audioMuted = false;
-    public AudioMixer globalMixer;
-    public Sprite audioEnabledImg;
-    public Sprite audioMutedImg;
-    public Image MuteBtnImageSource;
+    private int audioMuted = 0;
+    //1 = Muted && 0 == NotMuted
+
+    [SerializeField] private AudioMixer globalMixer;
+    [SerializeField] private Sprite audioEnabledImg;
+    [SerializeField] private Sprite audioMutedImg;
+    [SerializeField] private Image MuteBtnImageSource;
 
     private void Start()
     {
-       // MuteBtnImageSource
+        audioMuted = PlayerPrefs.GetInt("MuteStatus");
+        if(audioMuted == 0)
+        {
+            MuteBtnImageSource.sprite = audioEnabledImg;
+            globalMixer.SetFloat("Master", 0);
+        }
+        else
+        {
+            MuteBtnImageSource.sprite = audioMutedImg;
+            globalMixer.SetFloat("Master", -80);
+        }
     }
 
     public void LoadGameScene()
@@ -31,17 +43,19 @@ public class MenuSceneManager : MonoBehaviour
 
     public void OnAudioMuteBtnClick()
     {
-        if (!audioMuted)
+        if (audioMuted == 0)
         {
             globalMixer.SetFloat("Master", -80);
-            audioMuted = true;
-            MuteBtnImageSource.GetComponent<Image>().sprite = audioMutedImg;
+            audioMuted = 1;
+            PlayerPrefs.SetInt("MuteStatus", audioMuted);
+            MuteBtnImageSource.sprite = audioMutedImg;
         }
         else
         {
             globalMixer.SetFloat("Master", 0);
-            audioMuted = false;
-            MuteBtnImageSource.GetComponent<Image>().sprite = audioEnabledImg;
+            audioMuted = 0;
+            PlayerPrefs.SetInt("MuteStatus", audioMuted);
+            MuteBtnImageSource.sprite = audioEnabledImg;
         }
     }
 }

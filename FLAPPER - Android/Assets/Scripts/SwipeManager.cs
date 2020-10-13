@@ -11,6 +11,8 @@ public class SwipeManager : MonoBehaviour
 
     public UnityEvent OnSwipeLeft;
     public UnityEvent OnSwipeRight;
+    public UnityEvent OnSwipeUp;
+    public UnityEvent OnSwipeDown;
 
     private Vector2 fingerDown;
     private DateTime fingerDownTime;
@@ -55,16 +57,31 @@ public class SwipeManager : MonoBehaviour
         if (duration > this.timeThreshold) return;
 
         float deltaX = this.fingerDown.x - this.fingerUp.x;
+        float deltaY = this.fingerDown.y - this.fingerUp.y;
+
         if (Mathf.Abs(deltaX) > this.swipeThreshold)
         {
-            if (deltaX > 0)
+            if (deltaX > 0 && Mathf.Abs(deltaX) > Mathf.Abs(deltaY))
             {
                 this.OnSwipeRight.Invoke();
             }
-            else if (deltaX < 0)
+            else if (deltaX < 0 && Mathf.Abs(deltaX) > Mathf.Abs(deltaY))
             {
                 this.OnSwipeLeft.Invoke();
             }
         }
+        
+        if (Mathf.Abs(deltaY) > this.swipeThreshold)
+        {
+            if (deltaY > 0 && Mathf.Abs(deltaY) > Mathf.Abs(deltaX))
+            {
+                this.OnSwipeUp.Invoke();
+            }
+            else if (deltaY < 0 && Mathf.Abs(deltaY) > Mathf.Abs(deltaX))
+            {
+                this.OnSwipeDown.Invoke();
+            }
+        }
+        this.fingerUp = this.fingerDown;
     }
 }

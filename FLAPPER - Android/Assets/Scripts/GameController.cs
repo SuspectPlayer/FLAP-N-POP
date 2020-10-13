@@ -1,5 +1,4 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,10 +8,10 @@ public class GameController : MonoBehaviour
 {
     #region PUBLIC VARIABLES
     [Header("Player On Fire")]
-    public GameObject lvl1;
-    public GameObject lvl2;
-    public GameObject lvl3;
-    public GameObject lvl4;
+    [SerializeField] private GameObject lvl1;
+    [SerializeField] private GameObject lvl2;
+    [SerializeField] private GameObject lvl3;
+    [SerializeField] private GameObject lvl4;
 
     [Header("Score Settings")]
     public int currentScore;
@@ -20,32 +19,27 @@ public class GameController : MonoBehaviour
     public int currentMultiplier;
 
     [Header("UI Text Components")]
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI highscoreText;
-    public TextMeshProUGUI multiplierText;
-    public TextMeshProUGUI styleText;
-    public TextMeshProUGUI mainText;
-    public GameObject pauseBtn;
-    public float FadeRate;
-    public Image image;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI highscoreText;
+    [SerializeField] private TextMeshProUGUI multiplierText;
+    [SerializeField] private TextMeshProUGUI styleText;
+    [SerializeField] private TextMeshProUGUI mainText;
+    [SerializeField] private GameObject pauseBtn;
 
     [Header("Audio Source")]
-    public AudioSource audioSource;
+    [SerializeField] public AudioSource audioSource;
     private VO vo;
-
-    private float targetAlpha;
-    #endregion
 
     public bool isGameOver;
     private UIComponentManager uiComponentManager;
+    #endregion
 
+    #region Initialization
     private void Start()
     {
         vo = FindObjectOfType<VO>();
         uiComponentManager = FindObjectOfType<UIComponentManager>();
-        image.gameObject.SetActive(true);
         highScore = PlayerPrefs.GetInt("HighScore");
-        targetAlpha = image.color.a;
         isGameOver = false;   
         currentMultiplier = 1;
         Time.timeScale = 1f;
@@ -53,23 +47,11 @@ public class GameController : MonoBehaviour
         UpdateScoreText();
         UpdateHighScoreText();
         GameStart();
-        FadeOut();
-
     }
-    
+	#endregion
 
-    private void Update()
-    {
-        Color curColor = image.color;
-        float alphaDiff = Mathf.Abs(curColor.a - targetAlpha);
-        if (alphaDiff > 0.0001f)
-        {
-            curColor.a = Mathf.Lerp(curColor.a, targetAlpha, FadeRate * Time.deltaTime);
-            image.color = curColor;
-        }
-    }
-
-    public void UpdatePlayerEffects()
+	#region Player Trail Effect
+	public void UpdatePlayerEffects()
     {
         if(currentMultiplier < 2)
         {
@@ -108,16 +90,7 @@ public class GameController : MonoBehaviour
             lvl4.SetActive(true);
         }
     }
-
-    public void FadeOut()
-    {
-        targetAlpha = 0.0f;
-    }
-
-    public void FadeIn()
-    {
-        targetAlpha = 1.0f;
-    }
+    #endregion
 
     #region Player Scoring
     public void AddPoints()
@@ -125,6 +98,7 @@ public class GameController : MonoBehaviour
         //increase score by regular points
         currentScore += 1;
         currentMultiplier = 1;
+        ResetBirdToDefault();
         UpdateScoreText();
     }
 
@@ -137,10 +111,10 @@ public class GameController : MonoBehaviour
 
         multiplierText.SetText("x " + currentMultiplier);
         //play the voice over clip associated with the multiplier from VO.cs
-        vo.PlayMultiplierVoice();
+        vo.PlayMultiplierVoice(currentMultiplier);
         //Display multiplier text to Player for 1 second      
         StartCoroutine(DisplayMultiplier());
-        FindObjectOfType<PlayerController>().UpdateMultiplier(currentMultiplier);
+        FindObjectOfType<PlayerController>().UpdatePlayerMesh(currentMultiplier);
         UpdatePlayerEffects();
     }
 
@@ -165,8 +139,15 @@ public class GameController : MonoBehaviour
         styleText.gameObject.SetActive(false);
         mainText.gameObject.SetActive(false);
     }
+
+    public void ResetBirdToDefault()
+    {
+        currentMultiplier = 1;
+        UpdatePlayerEffects();
+        FindObjectOfType<PlayerController>().UpdatePlayerMesh(currentMultiplier);
+    }
     #endregion
-    
+
     #region Game Start
     public void GameStart()
     {
@@ -215,7 +196,6 @@ public class GameController : MonoBehaviour
             UpdateHighScoreText();
         }
             StartCoroutine(GameOverMenu());
-        
     }
 
     IEnumerator GameOverMenu()

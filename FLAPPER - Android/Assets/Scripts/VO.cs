@@ -32,56 +32,116 @@ public class VO : MonoBehaviour
     public AudioClip vo_v16;
     public AudioClip vo_v17;
     public AudioClip vo_v18;
-    #endregion
 
-    [Header("Intialising Components")]
     public AudioSource audiosource;
-    public GameController gameController;
+     #endregion
 
-    public void Start()
+    private void Start()
     {
         audiosource = GetComponent<AudioSource>();
-        gameController = FindObjectOfType<GameController>();
     }
 
     //public class to be called from other scripts to play voice over
-    public void PlayMultiplierVoice()
+    public void PlayMultiplierVoice(int _x)
     {
-        StartCoroutine(PlayVoiceLate());
+        StartCoroutine(PlayVoiceLate(_x));
     }
 
-    //plays Voice Over delayed by 1 second when player is getting multipliers
-    IEnumerator PlayVoiceLate()
+    //plays Voice Over delayed by 0.7 second when player is getting multipliers
+    IEnumerator PlayVoiceLate(int _multiplier)
     {
         yield return new WaitForSeconds(0.7f);
-        audiosource.PlayOneShot(GenerateRandomMultiplierVoiceOver(), 1f);
+        PlayVoiceOverAccordingToMultiplier(_multiplier);
+    }
+
+    private void PlayVoiceOverAccordingToMultiplier(int _cm)
+    {
+        if (_cm <= 22)
+        {
+            if (_cm == 2)
+            {
+                audiosource.PlayOneShot(vo_v1, 1f);
+            }
+            else if (_cm == 3)
+            {
+                audiosource.PlayOneShot(vo_v2, 1f);
+            }
+            else if (_cm == 6)
+            {
+                audiosource.PlayOneShot(vo_v3, 1f);
+            }
+            else if (_cm == 8)
+            {
+                audiosource.PlayOneShot(vo_v4, 1f);
+            }
+            else if (_cm == 10)
+            {
+                audiosource.PlayOneShot(vo_v5, 1f);
+            }
+            else if (_cm == 11)
+            {
+                audiosource.PlayOneShot(vo_v6, 1f);
+            }
+            else if (_cm == 12)
+            {
+                audiosource.PlayOneShot(vo_v7, 1f);
+            }
+            else if (_cm == 13)
+            {
+                audiosource.PlayOneShot(vo_v8, 1f);
+            }
+            else if (_cm == 14)
+            {
+                audiosource.PlayOneShot(vo_v9, 1f);
+            }
+            else if (_cm == 15)
+            {
+                audiosource.PlayOneShot(vo_v10, 1f);
+            }
+            else if (_cm == 16)
+            {
+                audiosource.PlayOneShot(vo_v11, 1f);
+            }
+            else if (_cm == 17)
+            {
+                audiosource.PlayOneShot(vo_v12, 1f);
+            }
+            else if (_cm == 18)
+            {
+                audiosource.PlayOneShot(vo_v13, 1f);
+            }
+            else if (_cm == 19)
+            {
+                audiosource.PlayOneShot(vo_v14, 1f);
+            }
+            else if (_cm == 20)
+            {
+                audiosource.PlayOneShot(vo_v15, 1f);
+            }
+            else if (_cm == 21)
+            {
+                audiosource.PlayOneShot(vo_v16, 1f);
+            }
+            else if (_cm == 22)
+            {
+                audiosource.PlayOneShot(vo_v17, 1f);
+            }
+            else if (_cm == 23)
+            {
+                audiosource.PlayOneShot(vo_v18, 1f);
+            }
+        }
+        else
+        {
+            audiosource.PlayOneShot(GenerateRandomMultiplierVoiceOver(), 1f);
+        }
     }
 
     private AudioClip GenerateRandomMultiplierVoiceOver()
     {
-        int ranNo = Random.Range(1, 107);
+        int ranNo = Random.Range(60, 107);
         AudioClip _clip = null;
-        if(ranNo < 30)
-        {
-            _clip = vo_v1;
-        }
-        else if(ranNo >= 30 && ranNo < 40)
-        {
-            _clip = vo_v2;
-        }
-        else if(ranNo >= 40 && ranNo < 50)
-        {
-            _clip = vo_v3;
-        }
-        else if (ranNo >= 50 && ranNo < 55)
-        {
-            _clip = vo_v4;
-        }
-        else if (ranNo >= 55 && ranNo < 60)
-        {
-            _clip = vo_v5;
-        }
-        else if (ranNo >= 60 && ranNo < 65)
+        if (ranNo >= 60 && ranNo < 65)
         {
             _clip = vo_v6;
         }
