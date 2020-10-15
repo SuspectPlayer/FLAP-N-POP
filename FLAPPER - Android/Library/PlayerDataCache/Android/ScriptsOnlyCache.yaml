@@ -599,7 +599,7 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 6e145c88c807012b2989cee0d63947b7
+      Hash: 8aef41f37c769156af98c45a901e4abc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SwipeManager

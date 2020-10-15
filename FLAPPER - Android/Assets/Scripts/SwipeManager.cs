@@ -7,8 +7,10 @@ using UnityEngine.Events;
 public class SwipeManager : MonoBehaviour
 {
     public float swipeThreshold = 50f;
-    public float timeThreshold = 0.3f;
+    public float swipeTimeThreshold = 0.3f;
+    public float clickTimeThreshold = 0.2f;
 
+    public UnityEvent OnScreenPress;
     public UnityEvent OnSwipeLeft;
     public UnityEvent OnSwipeRight;
     public UnityEvent OnSwipeUp;
@@ -31,30 +33,15 @@ public class SwipeManager : MonoBehaviour
         {
             this.fingerDown = Input.mousePosition;
             this.fingerUpTime = DateTime.Now;
-            this.CheckSwipe();
-        }
-
-        foreach (Touch touch in Input.touches)
-        {
-            if (touch.phase == TouchPhase.Began)
-            {
-                this.fingerDown = touch.position;
-                this.fingerUp = touch.position;
-                this.fingerDownTime = DateTime.Now;
-            }
-            if (touch.phase == TouchPhase.Ended)
-            {
-                this.fingerDown = touch.position;
-                this.fingerUpTime = DateTime.Now;
-                this.CheckSwipe();
-            }
+            this.CheckClick();
+            this.CheckSwipe();     
         }
     }
 
     private void CheckSwipe()
     {
         float duration = (float)this.fingerUpTime.Subtract(this.fingerDownTime).TotalSeconds;
-        if (duration > this.timeThreshold) return;
+        if (duration > this.swipeTimeThreshold) return;
 
         float deltaX = this.fingerDown.x - this.fingerUp.x;
         float deltaY = this.fingerDown.y - this.fingerUp.y;
@@ -83,5 +70,12 @@ public class SwipeManager : MonoBehaviour
             }
         }
         this.fingerUp = this.fingerDown;
+    }
+
+    private void CheckClick()
+    {
+        float duration = (float)this.fingerUpTime.Subtract(this.fingerDownTime).TotalSeconds;
+        if (duration > this.clickTimeThreshold) return;
+        this.OnScreenPress.Invoke();
     }
 }

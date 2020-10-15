@@ -62,14 +62,6 @@ public class PlayerController : MonoBehaviour
     {
         if (!isPaused)
         {
-            //handles buttons for flap and spin commands
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                Flap();
-                sfx.audioSource.PlayOneShot(sfx.sfx_flap,1f);
-                //reset fall velocity
-            }
-
             if(transform.position.y <= 20)
             {
                 isPaused = true;
@@ -89,10 +81,11 @@ public class PlayerController : MonoBehaviour
     public void Flap()
     {
         //applys rigidbody force upwards on player if isn't spinning and game is currently in progress
-        if(!spinning)
+        if(!spinning && !isPaused)
         {
             rb.velocity = Vector3.zero;
             rb.AddForce(Vector3.up * flapStrength * 100);
+            sfx.audioSource.PlayOneShot(sfx.sfx_flap, 1f);
         }        
     }
     public void SpinLeft()
